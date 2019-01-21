@@ -3,23 +3,12 @@ import { Platform } from 'react-native'
 import { createMaterialTopTabNavigator } from 'react-navigation'
 import TabBarIcon from '../components/TabBarIcon'
 import UserScreen from '../screens/UserScreen'
-import SettingsScreen from '../screens/SettingsScreen'
+import InfoScreen from '../screens/InfoScreen'
 import HabitsScreen from '../screens/HabitsScreen'
+import { Constants } from 'expo';
 
 export default createMaterialTopTabNavigator(
   {
-    User: {
-      screen: UserScreen,
-      navigationOptions: {
-        tabBarLabel: 'User',
-        tabBarIcon: ({ focused }) => (
-          <TabBarIcon
-            focused={focused}
-            name={Platform.OS === 'ios' ? 'ios-contact' : 'md-contact'}
-          />
-        )
-      }
-    },
     Habits: {
       screen: HabitsScreen,
       navigationOptions: {
@@ -32,14 +21,26 @@ export default createMaterialTopTabNavigator(
         )
       }
     },
-    Settings: {
-      screen: SettingsScreen,
+    User: {
+      screen: UserScreen,
       navigationOptions: {
-        tabBarLabel: 'Settings',
+        tabBarLabel: 'User',
         tabBarIcon: ({ focused }) => (
           <TabBarIcon
             focused={focused}
-            name={Platform.OS === 'ios' ? 'ios-cog' : 'md-cog'}
+            name={Platform.OS === 'ios' ? 'ios-contact' : 'md-contact'}
+          />
+        )
+      }
+    },
+    Info: {
+      screen: InfoScreen,
+      navigationOptions: {
+        tabBarLabel: 'Info',
+        tabBarIcon: ({ focused }) => (
+          <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? 'ios-information-circle' : 'md-information-circle'}
           />
         )
       }
@@ -49,7 +50,7 @@ export default createMaterialTopTabNavigator(
     tabBarOptions: {
       style: {
         backgroundColor: '#222',
-        paddingTop: 24
+        paddingTop: Constants.statusBarHeight,
       },
       showIcon: true,
       indicatorStyle: {

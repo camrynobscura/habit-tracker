@@ -4,29 +4,29 @@ import {
   Text,
   View
 } from 'react-native';
+import HabitsApp from '../components/HabitsApp'
 
-export default class Boookcase extends Component {
+export default class HabitsScreen extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      myHabits: [
+        {
+          habit1: {
+            title: "read more",
+            lvl1: "read one page",
+            lvl2: "read 10 pages"
+          }
+        }
+      ]
+    }
+
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>
-          My Habits
-        </Text>
-      </View>
+      <HabitsApp props={this.state}/>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // backgroundColor: '#F5FCFF',
-  },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  }
-});
